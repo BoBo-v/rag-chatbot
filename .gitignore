@@ -1,0 +1,115 @@
+# ====================================
+# RAG 项目 .gitignore
+# ====================================
+
+# ---------- Python 基础 ----------
+# 字节码缓存（类似 JS 的编译缓存）
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 虚拟环境（类似 node_modules，不要提交！）
+venv/
+env/
+.venv/
+ENV/
+
+# 分发/打包
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+
+# ---------- 项目数据 ----------
+# 向量数据库（体积大，应该在部署时重建）
+vectorstore/
+chroma_db/
+*.chroma
+
+# 聊天记录数据库（包含用户隐私）
+chat_history/
+*.db
+*.sqlite
+*.sqlite3
+
+# 知识库文档（可能包含敏感信息，按需决定）
+# data/
+# 如果知识库不敏感，可以注释掉上面这行
+
+# ---------- 环境配置 ----------
+# 环境变量（包含密钥等敏感信息）
+.env
+.env.local
+.env.*.local
+
+# 但保留示例文件
+!.env.example
+
+# ---------- IDE/编辑器 ----------
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ---------- 系统文件 ----------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ---------- 日志和临时文件 ----------
+logs/
+*.log
+*.tmp
+*.temp
+*.bak
+
+# ---------- 测试和覆盖率 ----------
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ---------- Jupyter Notebook ----------
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ---------- AI/ML 特定 ----------
+# 模型文件（通常很大）
+models/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.safetensors
+
+# Hugging Face 缓存
+.cache/
+
+# ---------- Docker ----------
+# Docker 数据卷（如果使用）
+docker-data/

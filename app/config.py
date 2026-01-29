@@ -30,6 +30,11 @@ class Settings(BaseSettings):
     # 对话配置
     MAX_HISTORY_TURNS: int = 10  # 保留最近10轮对话
 
+    # ========== JWT 认证配置 ==========
+    SECRET_KEY: str = "your-super-secret-key-change-this-in-production-123456"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24小时
+
     class Config:
         env_file = ".env"
 

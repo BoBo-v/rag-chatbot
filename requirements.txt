@@ -1,25 +1,26 @@
+
 # Web框架
-fastapi==0.115.0
-uvicorn[standard]==0.30.6
-python-multipart==0.0.9
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
 
-# LangChain 生态
-langchain==0.3.0
-langchain-community==0.3.0
-langchain-ollama==0.2.0
-langchain-text-splitters==0.3.0
-langchain-chroma==0.1.4
+# LangChain 生态（不锁死版本，让 pip 自动解决）
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-ollama>=0.1.0
+langchain-text-splitters>=0.2.0
+langchain-chroma>=0.1.0
 
-# 向量数据库
-chromadb==0.5.5
+# 向量数据库（不指定版本，让 langchain-chroma 决定）
+chromadb>=0.4.0
 
 # 中文分词
-jieba==0.42.1
+jieba>=0.42.1
 
 # 工具
-python-dotenv==1.0.1
-pydantic==2.9.0
-pydantic-settings==2.5.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
 
 # 数据存储
-aiosqlite==0.20.0  # 异步SQLite，存聊天记录
+aiosqlite>=0.20.0

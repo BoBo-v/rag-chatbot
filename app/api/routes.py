@@ -2,6 +2,7 @@
 API 路由定义
 """
 import asyncio
+import json
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
@@ -118,10 +119,7 @@ async def chat(request: ChatRequest):
 
 @router.post("/chat/stream")
 async def chat_stream(request: ChatRequest):
-    """
-    流式聊天接口
-    返回 SSE (Server-Sent Events)
-    """
+    """流式聊天接口"""
     # 处理会话
     session_id = request.session_id
     if not session_id:
@@ -130,19 +128,19 @@ async def chat_stream(request: ChatRequest):
         raise HTTPException(status_code=404, detail="会话不存在")
 
     async def generate():
-        # 先发送 session_id
-        yield f"data: {{'type': 'session', 'session_id': '{session_id}'}}\n\n"
+        # ✅ 使用 json.dumps 生成合法的 JSON
+        yield f"data: {json.dumps({'type': 'session', 'session_id': session_id})}\n\n"
 
         try:
             async for chunk in rag_engine.ask_stream(request.question, session_id):
-                # 转义特殊字符
-                escaped = chunk.replace('\n', '\\n').replace('"', '\\"')
-                yield f"data: {{'type': 'content', 'text': \"{escaped}\"}}\n\n"
+                # ✅ 使用 json.dumps 自动处理转义
+                yield f"data: {json.dumps({'type': 'content', 'text': chunk})}\n\n"
                 await asyncio.sleep(0.01)
 
-            yield "data: {\"type\": \"done\"}\n\n"
+            yield f"data: {json.dumps({'type': 'done'})}\n\n"
+
         except Exception as e:
-            yield f"data: {{'type': 'error', 'message': '{str(e)}'}}\n\n"
+            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
 
     return StreamingResponse(
         generate(),
@@ -152,6 +150,7 @@ async def chat_stream(request: ChatRequest):
             "Connection": "keep-alive",
         }
     )
+
 
 
 # ========== 系统接口 ==========

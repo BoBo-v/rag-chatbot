@@ -63,7 +63,9 @@ def root():
         "version": "1.0.4"
     }
 
-
+#激活临时环境 venv\Scripts\activate
+#创建临时环境 python -m venv venv
+#启动项目 python -m app.main
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(

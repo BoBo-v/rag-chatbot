@@ -1,26 +1,30 @@
+# Web 框架
+fastapi
+uvicorn
 
-# Web框架
-fastapi>=0.110.0
-uvicorn[standard]>=0.29.0
-python-multipart>=0.0.9
+# 数据验证
+pydantic
+pydantic-settings
 
-# LangChain 生态（不锁死版本，让 pip 自动解决）
-langchain>=0.2.0
-langchain-community>=0.2.0
-langchain-ollama>=0.1.0
-langchain-text-splitters>=0.2.0
-langchain-chroma>=0.1.0
+# 数据库
+aiosqlite
 
-# 向量数据库（不指定版本，让 langchain-chroma 决定）
-chromadb>=0.4.0
+# HTTP 请求
+requests
 
-# 中文分词
-jieba>=0.42.1
+# 认证
+python-jose[cryptography]
+passlib[bcrypt]
 
-# 工具
-python-dotenv>=1.0.0
-pydantic>=2.0.0
-pydantic-settings>=2.0.0
+# LangChain
+langchain
+langchain-ollama
+langchain-chroma
+langchain-text-splitters
 
-# 数据存储
-aiosqlite>=0.20.0
+# 向量数据库
+chromadb
+
+# 网络搜索
+duckduckgo-search
+ddgs

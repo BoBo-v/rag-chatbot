@@ -36,6 +36,11 @@ async def lifespan(app: FastAPI):
     print("👋 系统关闭")
 
 
+#激活临时环境 venv\Scripts\activate
+#创建临时环境 python -m venv venv
+#启动项目 python -m app.main
+#启动  uvicorn app.main:app --reload
+
 # 创建应用
 app = FastAPI(
     title=f"{settings.BOT_NAME} API",
